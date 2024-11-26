@@ -61,6 +61,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      container: {
+        padding: "1rem",
+        center: true,
+      },
     },
   },
   plugins: [tailwindAnimate],
