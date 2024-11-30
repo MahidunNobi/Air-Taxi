@@ -13,10 +13,10 @@ import { ArrowLeftRight, Plane } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="hero-bg h-[95vh] text-white grid place-content-center">
-      <div className="container flex flex-col md:flex-row gap-6 md:justify-between items-center">
+    <section className="hero-bg min-h-[95vh] text-white grid place-content-center">
+      <div className="container flex flex-col md:flex-row gap-6 md:justify-between items-center py-12">
         {/* ----------Intro--------- */}
-        <div className="max-w-[50%]">
+        <div className="md:max-w-[50%]">
           <h1 className="text-4xl md:text-6xl font-bold">
             Your Gateway to Seamless Air Travel.
           </h1>
@@ -49,7 +49,7 @@ const Hero = () => {
             </RadioGroup>
           </div>
           {/* -------------Destinations--------- */}
-          <div className="md:flex gap-5 items-center relative">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-5 items-center relative">
             {/* -------Leaving From-------- */}
             <Select>
               <SelectTrigger className="">
@@ -61,7 +61,7 @@ const Hero = () => {
                 <SelectItem value="system">System</SelectItem>
               </SelectContent>
             </Select>
-            <button className="shadow-lg border p-3 rounded-full absolute left-1/2 -translate-x-1/2 bg-white">
+            <button className="hidden md:inline-block shadow-lg border p-3 rounded-full absolute left-1/2 -translate-x-1/2 bg-white">
               <ArrowLeftRight size={16} />
             </button>
             {/* ------------Going To--------- */}
