@@ -7,9 +7,9 @@ import { FaHeadphonesAlt } from "react-icons/fa";
 const Services = () => {
   return (
     <section className="border-b">
-      <div className="container my-16 flex flex-col md:flex-row md:justify-between gap-3">
+      <div className="container my-16 flex flex-col md:flex-row md:justify-between gap-12 md:gap-3">
         {/* --------Easy Booking------- */}
-        <div className="max-w-[350px]">
+        <div className="max-w-[350px] flex flex-col items-center *:text-center md:*:text-left md:block">
           <FaSackDollar size={48} className="text-primary" />
           <h3 className="text-xl mt-3 font-medium">Easy Booking</h3>
           <p className="text-gray-500">
@@ -19,7 +19,7 @@ const Services = () => {
           </p>
         </div>
         {/* --------Best Destinations------- */}
-        <div className="max-w-[350px]">
+        <div className="max-w-[350px] flex flex-col items-center *:text-center md:*:text-left md:block">
           <FaUmbrellaBeach size={48} className="text-primary" />
           <h3 className="text-xl mt-3 font-medium">Best Destinations</h3>
           <p className="text-gray-500">
@@ -29,7 +29,7 @@ const Services = () => {
           </p>
         </div>
         {/* --------Travel Guides------- */}
-        <div className="max-w-[350px]">
+        <div className="max-w-[350px] flex flex-col items-center *:text-center md:*:text-left md:block">
           <FaPersonWalkingLuggage size={48} className="text-primary" />
           <h3 className="text-xl mt-3 font-medium">Travel Guides</h3>
           <p className="text-gray-500">
@@ -39,7 +39,7 @@ const Services = () => {
           </p>
         </div>
         {/* --------Friendly Support------- */}
-        <div className="max-w-[350px]">
+        <div className="max-w-[350px] flex flex-col items-center *:text-center md:*:text-left md:block">
           <FaHeadphonesAlt size={48} className="text-primary" />
           <h3 className="text-xl mt-3 font-medium">Friendly Support</h3>
           <p className="text-gray-500">
