@@ -7,10 +7,12 @@ body {
   font-family: "Jost", sans-serif;
 }
 
-/* 
-Primary: #cd2c22
-Light: #e83327
- */
+.hero-bg {
+  background: linear-gradient(to right, #33333363, #33333363), url("/hero.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 @layer base {
   :root {
