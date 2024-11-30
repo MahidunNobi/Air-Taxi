@@ -13,6 +13,8 @@ const buttonVariants = cva(
           "bg-primary text-primary-foreground shadow hover:bg-primary-light",
         white:
           "bg-primary-foreground text-primary shadow hover:bg-primary hover:text-primary-foreground",
+        submit:
+          "bg-primary text-primary-foreground shadow w-full text-center relative overflow-hidden before:h-[130%] before:w-6 before:bg-transparent hover:before:bg-white/25 before:absolute before:-left-3 before:rotate-[30deg] hover:before:left-[105%] before:duration-500",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
@@ -25,6 +27,7 @@ const buttonVariants = cva(
       size: {
         default: "h-9 px-2 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
+        sumbit: "h-16 rounded-md px-3 ",
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
       },
