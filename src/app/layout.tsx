@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/components/Shared/Navbar/Navbar";
-import Footer from "@/components/Shared/Footer/Footer";
 import AuthProvider from "@/providers/AuthProvider";
 import TanstackProvider from "@/providers/TanstackProvider";
 import { Toaster } from "@/components/ui/toaster";
@@ -34,11 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <TanstackProvider>
-          <AuthProvider>
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-          </AuthProvider>
+          <AuthProvider>{children}</AuthProvider>
         </TanstackProvider>
         <Toaster />
       </body>
