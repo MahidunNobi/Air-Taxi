@@ -6,8 +6,8 @@ import {
 import { FaHeadphonesAlt } from "react-icons/fa";
 const Services = () => {
   return (
-    <section className="border-b">
-      <div className="container my-16 flex flex-col md:flex-row md:justify-between gap-12 md:gap-3">
+    <section className="border-b py-16">
+      <div className="container flex flex-col md:flex-row md:justify-between gap-12 md:gap-3">
         {/* --------Easy Booking------- */}
         <div className="max-w-[350px] flex flex-col items-center *:text-center md:*:text-left md:block">
           <FaSackDollar size={48} className="text-primary" />

@@ -1,4 +1,5 @@
 import Hero from "@/components/Home/Hero/Hero";
+import PopularDestinations from "@/components/Home/PupularDestinations/PopularDestinations";
 import Services from "@/components/Home/Services/Services";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <Hero />
       <Services />
+      <PopularDestinations />
     </>
   );
 }
