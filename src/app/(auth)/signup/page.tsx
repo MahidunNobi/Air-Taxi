@@ -44,31 +44,31 @@ const Page = () => {
     }
     console.log(user);
 
-    // mutation.mutate(user, {
-    //   onSuccess: (data) => {
-    //     toast({
-    //       title: data.data.message,
-    //     });
-    //     form.reset();
-    //   },
-    //   onError: (error) => {
-    //     if (axios.isAxiosError(error)) {
-    //       if (
-    //         error.response &&
-    //         error.response.data &&
-    //         (error.status === 403 || error.status === 400)
-    //       ) {
-    //         const errorMessage = (error.response.data as ErrorResponse).message;
-    //         toast({
-    //           variant: "destructive",
-    //           title: errorMessage,
-    //         });
-    //       }
-    //     } else {
-    //       console.log("Error", error);
-    //     }
-    //   },
-    // });
+    mutation.mutate(user, {
+      onSuccess: (data) => {
+        toast({
+          title: data.data.message,
+        });
+        form.reset();
+      },
+      onError: (error) => {
+        if (axios.isAxiosError(error)) {
+          if (
+            error.response &&
+            error.response.data &&
+            (error.status === 403 || error.status === 400)
+          ) {
+            const errorMessage = (error.response.data as ErrorResponse).message;
+            toast({
+              variant: "destructive",
+              title: errorMessage,
+            });
+          }
+        } else {
+          console.log("Error", error);
+        }
+      },
+    });
   };
 
   return (
