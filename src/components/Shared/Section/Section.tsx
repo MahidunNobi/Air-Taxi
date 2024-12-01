@@ -5,7 +5,7 @@ const Section = ({
   children: React.ReactNode;
   classN?: string;
 }) => {
-  return <section className={`my-16 ${classN}`}>{children}</section>;
+  return <section className={`py-16 ${classN}`}>{children}</section>;
 };
 
 export default Section;

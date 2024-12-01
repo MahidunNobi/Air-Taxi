@@ -9,7 +9,7 @@ const PopularDestinations = () => {
         <h2 className="text-4xl font-semibold text-center">
           Explore Popular Destination
         </h2>
-        <div className="mt-12 grid grid-cols-4 justify-items-center gap-8">
+        <div className="mt-12 grid grid-cols-4 justify-items-center gap-12 ">
           <SingleDest />
           <SingleDest />
           <SingleDest />
