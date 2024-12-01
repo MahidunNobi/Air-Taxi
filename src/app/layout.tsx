@@ -5,6 +5,7 @@ import Navbar from "@/components/Shared/Navbar/Navbar";
 import Footer from "@/components/Shared/Footer/Footer";
 import AuthProvider from "@/providers/AuthProvider";
 import TanstackProvider from "@/providers/TanstackProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,6 +40,7 @@ export default function RootLayout({
             <Footer />
           </AuthProvider>
         </TanstackProvider>
+        <Toaster />
       </body>
     </html>
   );

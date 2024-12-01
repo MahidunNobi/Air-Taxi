@@ -1,5 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 import {
   Sheet,
@@ -9,14 +17,15 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { CircleUserRound, Menu } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
 import React from "react";
 
 const Navbar = () => {
-  //   const session = useSession();
+  const session = useSession();
 
   const NavLinks = [
     {
@@ -56,6 +65,7 @@ const Navbar = () => {
               />
             </div>
           </Link>
+          {/* ---------Dextop Navlinks--------- */}
           <div className="hidden md:flex gap-6 *: *:duration-300 ">
             {NavLinks.map((link) => (
               <Link
@@ -70,9 +80,40 @@ const Navbar = () => {
         </div>
 
         {/* ------Navigations items--- */}
-        <Link href="/login" className="hidden md:flex">
-          <Button size={"lg"}> Sign In </Button>{" "}
-        </Link>
+
+        {session.status === "authenticated" ? (
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <div className="flex items-center">
+                <CircleUserRound
+                  size={46}
+                  className="bg- rounded-full p-2 z-10 text-primary"
+                />
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>{session.data.user?.name}</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              {NavLinks.map((page) => (
+                <DropdownMenuItem key={page.id}>
+                  <Link href={page.path} className="w-full">
+                    {page.title}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+
+              <DropdownMenuItem>
+                <button onClick={() => signOut({ redirect: false })}>
+                  Log Out
+                </button>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ) : (
+          <Link href="/login" className="hidden md:flex">
+            <Button size={"lg"}> Sign In </Button>{" "}
+          </Link>
+        )}
 
         {/*------ Mobile navigation Items----- */}
         <div className="md:hidden">

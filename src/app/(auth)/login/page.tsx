@@ -64,7 +64,12 @@ const Page = () => {
               required
               placeholder="Password"
             />
-            <Button type="submit" disabled={loading}>
+            <Button
+              type="submit"
+              variant={"submit"}
+              size={"sumbit"}
+              disabled={loading}
+            >
               {loading ? <Loader /> : "Login"}
             </Button>
           </form>

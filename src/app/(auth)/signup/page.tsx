@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { FormEvent } from "react";
 import Loader from "@/components/Shared/Loader/Loader";
 import Google from "@/components/Shared/Google/Google";
+import { useRouter } from "next/navigation";
 
 interface UserData {
   name: string;
@@ -21,6 +22,7 @@ interface ErrorResponse {
 
 const Page = () => {
   const { toast } = useToast();
+  const router = useRouter();
 
   const mutation = useMutation({
     mutationFn: (userData: UserData) => {
@@ -50,6 +52,7 @@ const Page = () => {
           title: data.data.message,
         });
         form.reset();
+        router.push("/login");
       },
       onError: (error) => {
         if (axios.isAxiosError(error)) {
