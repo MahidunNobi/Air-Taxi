@@ -94,13 +94,12 @@ const Navbar = () => {
             <DropdownMenuContent>
               <DropdownMenuLabel>{session.data.user?.name}</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              {NavLinks.map((page) => (
-                <DropdownMenuItem key={page.id}>
-                  <Link href={page.path} className="w-full">
-                    {page.title}
-                  </Link>
-                </DropdownMenuItem>
-              ))}
+
+              <DropdownMenuItem>
+                <Link href={"/dashboard"} className="w-full">
+                  Dashboard
+                </Link>
+              </DropdownMenuItem>
 
               <DropdownMenuItem>
                 <button onClick={() => signOut({ redirect: false })}>

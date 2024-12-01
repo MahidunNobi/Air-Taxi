@@ -62,6 +62,7 @@ export const authOptions: NextAuthOptions = {
           const newUser = new User({
             email,
             name,
+            phone: "",
             imageUrl: image,
             provider: account.provider,
           });
@@ -75,19 +76,21 @@ export const authOptions: NextAuthOptions = {
       return baseUrl;
     },
     async jwt({ token }) {
-      // console.log(" TOKEN", token)
-      // await connectDB();
-      // const dbUser = await User.findOne({ email: token.email });
+      // console.log(" TOKEN", token);
+      await connectDB();
+      const dbUser = await User.findOne({ email: token.email });
       // token.name = dbUser?.name;
+      token.role = dbUser?.role;
       // token.provider = dbUser?.provider;
       // token.suspended = dbUser?.suspended;
       return token;
     },
-    async session({ session }) {
-      // console.log("THis is Session:", session);
+    async session({ session, token }) {
       // session.user?.name = token.name;
+      session.user.role = token.role;
       // session.user?.provider = token.provider;
       // session.user.suspended = token.suspended;
+      // console.log("THis is Session:", session);
       return session;
     },
   },
