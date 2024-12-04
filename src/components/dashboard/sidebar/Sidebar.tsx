@@ -4,12 +4,9 @@ import Image from "next/image";
 import { SidebarContext } from "@/Context/SidebarContext";
 import { ChevronFirst, ChevronLast, MoreVertical } from "lucide-react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 
 export default function Sidebar({ children }: { children: React.ReactNode }) {
   const sidebarCon = useContext(SidebarContext);
-  const session = useSession();
-  console.log(session);
 
   return (
     <aside className="min-h-screen absolute top-0 left-0 z-10 md:static">
@@ -43,6 +40,7 @@ export default function Sidebar({ children }: { children: React.ReactNode }) {
           </button>
         </div>
         <ul className="flex-1 px-3">{children}</ul>
+
         {/* ------ Bottom user ---------*/}
         <div className="border-t flex p-3">
           <Image

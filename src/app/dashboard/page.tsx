@@ -1,4 +1,4 @@
-import React from "react";
+// Dashboard
 
 const page = () => {
   return <div>page</div>;
