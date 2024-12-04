@@ -17,6 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Page = () => {
   return (
@@ -47,7 +48,9 @@ const Page = () => {
               <SelectItem value="system">System</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant={"submit"}>Add Flight</Button>
+          <Link href={"/dashboard/flights/add-flight"}>
+            <Button variant={"submit"}>Add Flight</Button>
+          </Link>
         </div>
       </div>
 
