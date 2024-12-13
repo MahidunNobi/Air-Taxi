@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 import { DatePicker } from "@/components/ui/date-picker";
 import { Input } from "@/components/ui/input";
 import {
@@ -22,25 +22,36 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { IAirline } from "@/modules/Airline/Airline.interface";
-import { getAirlines } from "@/modules/Airline/Airline.action";
 import Image from "next/image";
-import Airline_active_button from "@/components/dashboard/Admin/Airline_active_button";
+
 import { Types } from "mongoose";
+import { toast } from "@/hooks/use-toast";
 
-const Page = async () => {
-  // const {
-  //   data: myBookings,
-  //   isLoading,
-  //   refetch,
-  // } = useQuery<IAirline[]>({
-  //   queryKey: ["get-airlines"],
-  //   queryFn: async () => {
-  //     const res = await axios.get("/my-pending-bookings/api");
-  //     return res.data;
-  //   },
-  // });
+const Page = () => {
+  const {
+    data: airlines,
+    isLoading,
+    refetch,
+  } = useQuery<IAirline[]>({
+    queryKey: ["get-airlines"],
+    queryFn: async () => {
+      const res = await axios.get("/api/airline");
+      return res.data;
+    },
+  });
 
-  const airlines = await getAirlines();
+  const handleActivate = async (id: Types.ObjectId) => {
+    const res = await axios.patch(`/api/airline/${id}`, {
+      account_status: "active",
+    });
+    if (res.status === 200) {
+      return toast({
+        variant: "success",
+        title: "Airline Activated",
+      });
+    }
+    refetch();
+  };
   return (
     <div>
       <h3 className="text-4xl mb-10 font-medium"> Available Airlines</h3>
@@ -89,37 +100,42 @@ const Page = async () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {airlines.map((air) => (
-            <TableRow key={air._id?.toString()}>
-              <TableCell className="font-medium">
-                <Image
-                  src={air.airline_logo}
-                  alt={air.airline_name}
-                  width={60}
-                  height={100}
-                />
-              </TableCell>
-              <TableCell>{air.airline_name}</TableCell>
-              <TableCell>{air.airline_licence_no}</TableCell>
-              <TableCell>{air.airline_email}</TableCell>
-              <TableCell>
-                {air.account_status === "pending" && (
-                  <span className="text-[#F5A623]">Pending</span>
-                )}
-                {air.account_status === "active" && (
-                  <span className="text-[#4CAF50]">Active</span>
-                )}
-                {air.account_status === "suspended" && (
-                  <span className="text-[#ff2727]">Suspended</span>
-                )}
-              </TableCell>
-              <TableCell>
-                <Airline_active_button
-                  id={(air._id as Types.ObjectId).toString()}
-                />
-              </TableCell>
-            </TableRow>
-          ))}
+          {airlines &&
+            airlines.map((air) => (
+              <TableRow key={air._id?.toString()}>
+                <TableCell className="font-medium">
+                  <Image
+                    src={air.airline_logo}
+                    alt={air.airline_name}
+                    width={60}
+                    height={100}
+                  />
+                </TableCell>
+                <TableCell>{air.airline_name}</TableCell>
+                <TableCell>{air.airline_licence_no}</TableCell>
+                <TableCell>{air.airline_email}</TableCell>
+                <TableCell>
+                  {air.account_status === "pending" && (
+                    <span className="text-[#F5A623]">Pending</span>
+                  )}
+                  {air.account_status === "active" && (
+                    <span className="text-[#4CAF50]">Active</span>
+                  )}
+                  {air.account_status === "suspended" && (
+                    <span className="text-[#ff2727]">Suspended</span>
+                  )}
+                </TableCell>
+                <TableCell>
+                  <Button
+                    onClick={() => handleActivate(air._id as Types.ObjectId)}
+                    variant={"success"}
+                    size={"lg"}
+                  >
+                    Activate
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </div>
