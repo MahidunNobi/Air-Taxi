@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import SidebarContextProvider from "@/Context/SidebarContext";
 import Sidebar from "@/components/dashboard/sidebar/Sidebar";
-import { CirclePlus, Kanban, PlaneTakeoff } from "lucide-react";
+import { Building2, PlaneTakeoff } from "lucide-react";
 import SidebarItem from "@/components/dashboard/sidebar/SidebarItem";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/utils/AuthOptions";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +14,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const sessionData = await getServerSession(authOptions);
+  // const sessionData = await getServerSession(authOptions);
   // console.log(sessionData?.user);
 
   const navigations = [
@@ -26,14 +24,9 @@ export default async function RootLayout({
       text: "All Flights",
     },
     {
-      path: "add-movie",
-      icon: <CirclePlus size={20} />,
-      text: "Add Movie",
-    },
-    {
-      path: "manage-movie",
-      icon: <Kanban size={20} />,
-      text: "Manage Movie",
+      path: "airlines",
+      icon: <Building2 size={20} />,
+      text: "Air Lines",
     },
   ];
   return (

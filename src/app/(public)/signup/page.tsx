@@ -114,6 +114,16 @@ const Page = () => {
               Login
             </Link>
           </span>
+          <br />
+          <span className="text-gray-600">
+            Want to create an airlines account?
+            <Link
+              href={"/signup-airline"}
+              className="text-primary text-sm mt-3"
+            >
+              Click here
+            </Link>
+          </span>
         </div>
       </div>
     </main>
