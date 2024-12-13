@@ -24,6 +24,8 @@ import axios from "axios";
 import { IAirline } from "@/modules/Airline/Airline.interface";
 import { getAirlines } from "@/modules/Airline/Airline.action";
 import Image from "next/image";
+import Airline_active_button from "@/components/dashboard/Admin/Airline_active_button";
+import { Types } from "mongoose";
 
 const Page = async () => {
   // const {
@@ -39,8 +41,6 @@ const Page = async () => {
   // });
 
   const airlines = await getAirlines();
-  console.log(airlines);
-
   return (
     <div>
       <h3 className="text-4xl mb-10 font-medium"> Available Airlines</h3>
@@ -113,7 +113,11 @@ const Page = async () => {
                   <span className="text-[#ff2727]">Suspended</span>
                 )}
               </TableCell>
-              <TableCell></TableCell>
+              <TableCell>
+                <Airline_active_button
+                  id={(air._id as Types.ObjectId).toString()}
+                />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
