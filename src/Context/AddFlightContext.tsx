@@ -64,11 +64,11 @@ type SidebarContextType = {
   setFlightDetails?: React.Dispatch<SetStateAction<FlightType>>;
 };
 
-export const SidebarContext = createContext<SidebarContextType>({
+export const AddFlightContext = createContext<SidebarContextType>({
   flightDetails: initialFlightDetails,
 });
 
-const SidebarContextProvider = ({
+const AddFlightContextProvider = ({
   children,
 }: {
   children: React.ReactNode;
@@ -76,10 +76,10 @@ const SidebarContextProvider = ({
   const [flightDetails, setFlightDetails] =
     useState<FlightType>(initialFlightDetails);
   return (
-    <SidebarContext.Provider value={{ flightDetails, setFlightDetails }}>
+    <AddFlightContext.Provider value={{ flightDetails, setFlightDetails }}>
       {children}
-    </SidebarContext.Provider>
+    </AddFlightContext.Provider>
   );
 };
 
-export default SidebarContextProvider;
+export default AddFlightContextProvider;

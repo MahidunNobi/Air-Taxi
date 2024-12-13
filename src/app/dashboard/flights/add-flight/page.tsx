@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import AddFlightContextProvider from "@/Context/AddFlightContext";
 
 type FormType = {
   service_name: string;
@@ -98,87 +99,89 @@ const Page = () => {
   };
 
   return (
-    <main>
-      <div className="container mx-auto grid place-content-center min-h-[90vh]">
-        <div className="border shadow-lg px-4 py-16 rounded-lg w-[530px]">
-          <h2 className="text-4xl text-center font-semibold mb-6">
-            Add New Flight
-          </h2>
-          <form
-            onSubmit={handleAdd}
-            className="flex flex-col gap-3 md:min-w-96"
-          >
-            {/* -------Flight Number-------- */}
-            <div>
-              <Label htmlFor="flight_number"> Flight Number </Label>
-              <InputRegular
-                id="flight_number"
-                type="text"
-                name="flight_number"
-                required
-                placeholder="Al-35245"
-              />
-            </div>
-            {/* -------Airline Name-------- */}
-            <div>
-              <Label htmlFor="airline_name"> Airline Name </Label>
-              <InputRegular
-                type="text"
-                name="airline_name"
-                id="airline_name"
-                required
-                placeholder="Airline Name"
-              />
-            </div>
-            {/* -------Departure & Arival Place--------- */}
-            <div className="flex gap-3">
-              <div className="flex-1">
-                <Label> Departure Airport </Label>
-                <Select>
-                  <SelectTrigger className="w-full h-auto">
-                    <SelectValue placeholder="Sort By" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
+    <AddFlightContextProvider>
+      <main>
+        <div className="container mx-auto grid place-content-center min-h-[90vh]">
+          <div className="border shadow-lg px-4 py-16 rounded-lg w-[530px]">
+            <h2 className="text-4xl text-center font-semibold mb-6">
+              Add New Flight
+            </h2>
+            <form
+              onSubmit={handleAdd}
+              className="flex flex-col gap-3 md:min-w-96"
+            >
+              {/* -------Flight Number-------- */}
+              <div>
+                <Label htmlFor="flight_number"> Flight Number </Label>
+                <InputRegular
+                  id="flight_number"
+                  type="text"
+                  name="flight_number"
+                  required
+                  placeholder="Al-35245"
+                />
               </div>
-              <div className="flex-1">
-                <Label> Airval Airport </Label>
-                <Select>
-                  <SelectTrigger className="w-full h-auto">
-                    <SelectValue placeholder="Sort By" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="light">Light</SelectItem>
-                    <SelectItem value="dark">Dark</SelectItem>
-                    <SelectItem value="system">System</SelectItem>
-                  </SelectContent>
-                </Select>
+              {/* -------Airline Name-------- */}
+              <div>
+                <Label htmlFor="airline_name"> Airline Name </Label>
+                <InputRegular
+                  type="text"
+                  name="airline_name"
+                  id="airline_name"
+                  required
+                  placeholder="Airline Name"
+                />
               </div>
-            </div>
+              {/* -------Departure & Arival Place--------- */}
+              <div className="flex gap-3">
+                <div className="flex-1">
+                  <Label> Departure Airport </Label>
+                  <Select>
+                    <SelectTrigger className="w-full h-auto">
+                      <SelectValue placeholder="Sort By" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="light">Light</SelectItem>
+                      <SelectItem value="dark">Dark</SelectItem>
+                      <SelectItem value="system">System</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex-1">
+                  <Label> Airval Airport </Label>
+                  <Select>
+                    <SelectTrigger className="w-full h-auto">
+                      <SelectValue placeholder="Sort By" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="light">Light</SelectItem>
+                      <SelectItem value="dark">Dark</SelectItem>
+                      <SelectItem value="system">System</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
 
-            {/* -------Flight Schedule Type-------- */}
-            <FlightsScheduleType />
+              {/* -------Flight Schedule Type-------- */}
+              <FlightsScheduleType />
 
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-              {/* <Label htmlFor="picture">Picture</Label> */}
-              <InputRegular
-                id="picture"
-                type="file"
-                name="service_image"
-                required
-              />
-            </div>
-            <Button type="submit" disabled={isPending || loading}>
-              {isPending || loading ? <Loader /> : "ADD"}
-            </Button>
-          </form>
+              <div className="grid w-full max-w-sm items-center gap-1.5">
+                {/* <Label htmlFor="picture">Picture</Label> */}
+                <InputRegular
+                  id="picture"
+                  type="file"
+                  name="service_image"
+                  required
+                />
+              </div>
+              <Button type="submit" disabled={isPending || loading}>
+                {isPending || loading ? <Loader /> : "ADD"}
+              </Button>
+            </form>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </AddFlightContextProvider>
   );
 };
 
